@@ -29,17 +29,19 @@ for _ in range(0, 1000):
     steps_x_coords.append(x_coord)
     steps_y_coords.append(y_coord)
 
-fig = px.line(x=steps_x_coords, y=steps_y_coords, title="Plot #0", width=800, height=800)
+fig = px.line(x=steps_x_coords, y=steps_y_coords, title="Plot #0", width=600, height=600)
 fig.update_layout(xaxis_range=[-40, 40])
 fig.update_layout(yaxis_range=[-40, 40])
 fig.update_xaxes(zeroline=True, zerolinewidth=2, zerolinecolor='Black')
 fig.update_yaxes(zeroline=True, zerolinewidth=2, zerolinecolor='Black')
+
 app.layout = html.Div(
     [
         html.H3("Random Walk Simulation", style={"textAlign": "center"}),
-        html.Button("Generate values", id="random-val", n_clicks=0),
+        html.Button("Generate values", id="random-val", n_clicks=0,),
         dcc.Graph(
             id="graph",
+            style={'width': '75vh', 'height': '75vh','marginLeft': 'auto', 'marginRight': 'auto'},
             figure=fig,
         ),
     ]
